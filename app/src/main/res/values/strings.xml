@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">MyCalculatorVol2</string>
+    <string name="app_name">MyCalculator</string>
     <string name="action_settings">Settings</string>
     <string name="resultString">resultString</string>
+    <string name="action_changeCalc">changeCalc </string>
+    <string name="action_changeLanguage">changeLanguage </string>
 </resources>

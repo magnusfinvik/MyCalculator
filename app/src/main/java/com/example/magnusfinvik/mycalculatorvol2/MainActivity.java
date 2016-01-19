@@ -1,8 +1,6 @@
 package com.example.magnusfinvik.mycalculatorvol2;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -56,14 +54,18 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btnClear: resultView.setText("");break;
             case R.id.btnRemoveOne:
-                resultView.setText("tjohei");
+                if(resultView.length() > 0)
+                    resultView.setText(resultView.getText().toString().substring(0, resultView.length()-1));
                 break;
+            case R.id.btnUseAnswer: resultView.append(result.getText());break;
+            case R.id.btnBracketLeft: resultView.append("(");break;
+            case R.id.btnBracketRight: resultView.append(")");break;
             case R.id.btnDivide: resultView.append("/");break;
             case R.id.btnMultiply: resultView.append("*");break;
             case R.id.btnMinus: resultView.append("-");break;
             case R.id.btnPlus: resultView.append("+");break;
-            case R.id.btnBracketLeft: resultView.append("[");break;
-            case R.id.btnBracketRight: resultView.append("]");break;
+            case R.id.btnPercentage: resultView.append("%");break;
+            case R.id.btnSqrt: resultView.append("sqrt");break;
             case R.id.btnComma: resultView.append(".");break;
             case R.id.btnSeven: resultView.append("7");break;
             case R.id.btnEight: resultView.append("8");break;
