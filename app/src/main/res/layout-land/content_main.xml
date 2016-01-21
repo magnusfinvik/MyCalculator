@@ -5,13 +5,15 @@
     android:layout_alignParentLeft="true"
     android:layout_alignParentRight="true">
 
+    <include layout="@layout/toolbar" />
+
+
     <TextView
         android:id="@+id/resultView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text=""
-        android:maxHeight="150dp"
-        android:minHeight="120dp"
+
         android:layout_weight="1"
         android:gravity="center"
         android:textSize="22dp" />

@@ -14,12 +14,33 @@ import org.matheclipse.parser.client.eval.DoubleEvaluator;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final java.lang.String CALCULATOR_STATE = "Calculator";
+    private static final java.lang.String EXPRESSION_STATE = "Expression";
+    private int typeOfCalculator = 0;
+    private String calculatorState;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.content_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        calculatorState = "simple";
+
+        if(savedInstanceState != null){
+            typeOfCalculator = savedInstanceState.getInt(CALCULATOR_STATE);
+            switch (typeOfCalculator){
+                case 0:
+                    setContentView(R.layout.content_main);
+                    setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+                    break;
+                case 1:
+                    setContentView(R.layout.scientific_main);
+                    setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+                    break;
+            }
+            ((TextView)findViewById(R.id.resultView)).setText(savedInstanceState.getCharSequence(EXPRESSION_STATE));
+        }
     }
 
     @Override
@@ -30,6 +51,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+        outState.putCharSequence(EXPRESSION_STATE, ((TextView) findViewById(R.id.resultView)).getText().toString());
+        outState.putInt(CALCULATOR_STATE, typeOfCalculator);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
@@ -37,7 +65,17 @@ public class MainActivity extends AppCompatActivity {
                 this.finish();
                 return true;
             case R.id.action_changeCalc:
-                //legg til opphenting av nytt view her
+                if(calculatorState == "simple"){
+                    setContentView(R.layout.scientific_main);
+                    Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+                    setSupportActionBar(toolbar);
+                    calculatorState = "scientific";
+                }else{
+                    setContentView(R.layout.content_main);
+                    Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+                    setSupportActionBar(toolbar);
+                    calculatorState = "simple";
+                }
                 return true;
             case R.id.action_info:
 
@@ -52,9 +90,6 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
                 alertDialog.show();
-                return true;
-            case R.id.action_settings:
-                //insertSomethingHere
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -78,14 +113,13 @@ public class MainActivity extends AppCompatActivity {
                     resultView.setText(resultView.getText().toString().substring(0, resultView.length()-1));
                 break;
             case R.id.btnUseAnswer: resultView.append(result.getText());break;
-            case R.id.btnBracketLeft: resultView.append("(");break;
-            case R.id.btnBracketRight: resultView.append(")");break;
+            case R.id.btnBracketRight: resultView.append("]");break;
             case R.id.btnDivide: resultView.append("/");break;
             case R.id.btnMultiply: resultView.append("*");break;
             case R.id.btnMinus: resultView.append("-");break;
             case R.id.btnPlus: resultView.append("+");break;
             case R.id.btnPercentage: resultView.append("%");break;
-            case R.id.btnSqrt: resultView.append("sqrt(");break;
+            case R.id.btnSqrt: resultView.append("Sqrt[");break;
             case R.id.btnComma: resultView.append(".");break;
             case R.id.btnSeven: resultView.append("7");break;
             case R.id.btnEight: resultView.append("8");break;

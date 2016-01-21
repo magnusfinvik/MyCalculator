@@ -34,7 +34,7 @@
 
         <Button
             android:id="@+id/btnPercentage"
-            android:text="%"
+            android:text="tjohei"
             style="@style/buttonStyleLandScape"
             android:onClick="btnClick" />
         <Button
@@ -58,18 +58,22 @@
         <Button
             android:id="@+id/btnClear"
             android:text="CE"
-            style="@style/buttonStyleLandScape"
+            style="@style/MyOwnButtonStyle"
+            android:onClick= "btnClick"/>
+        <Button
+            android:id="@+id/btnBracketLeft"
+            android:text="("
+            style="@style/MyOwnButtonStyle"
             android:onClick= "btnClick"/>
         <Button
             android:id="@+id/btnBracketRight"
             android:text=")"
-            style="@style/buttonStyleLandScape"
-            android:onClick= "btnClick"/>
-
+            style="@style/MyOwnButtonStyle"
+            android:onClick="btnClick"/>
         <Button
             android:id="@+id/btnMultiply"
             android:text="x"
-            style="@style/buttonStyleLandScape"
+            style="@style/MyOwnButtonStyle"
             android:onClick="btnClick"/>
     </TableRow>
 
