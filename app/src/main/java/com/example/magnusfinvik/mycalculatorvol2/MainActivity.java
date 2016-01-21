@@ -1,5 +1,7 @@
 package com.example.magnusfinvik.mycalculatorvol2;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -29,17 +31,35 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()) {
+            case R.id.action_end:
+                this.finish();
+                return true;
+            case R.id.action_changeCalc:
+                //legg til opphenting av nytt view her
+                return true;
+            case R.id.action_info:
+
+                AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                alertDialog.setTitle(getString(R.string.infoTitle));
+                alertDialog.setMessage(getString(R.string.infoField));
+                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, getString(R.string.ok_button),
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                alertDialog.show();
+                return true;
+            case R.id.action_settings:
+                //insertSomethingHere
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+
         }
-
-        return super.onOptionsItemSelected(item);
     }
 
     public void btnClick(View view) {
@@ -65,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btnMinus: resultView.append("-");break;
             case R.id.btnPlus: resultView.append("+");break;
             case R.id.btnPercentage: resultView.append("%");break;
-            case R.id.btnSqrt: resultView.append("sqrt");break;
+            case R.id.btnSqrt: resultView.append("sqrt(");break;
             case R.id.btnComma: resultView.append(".");break;
             case R.id.btnSeven: resultView.append("7");break;
             case R.id.btnEight: resultView.append("8");break;

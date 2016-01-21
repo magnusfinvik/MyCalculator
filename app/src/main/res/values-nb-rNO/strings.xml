@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Kalkulator</string>
+    <string name="action_settings">Instillinger</string>
+    <string name="action_changeCalc">endre kalkulator</string>
+    <string name="action_changeLanguage">endre språk</string>
+    <string name ="infoField">Forfatter av denne appen er Magnus Finvik. Vi er nå på versjon 0.1</string>
+    <string name="infoTitle">informasjon</string>
+    <string name="resultText" >resultat</string>
+</resources>

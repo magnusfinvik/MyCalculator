@@ -1,7 +1,10 @@
 <resources>
-    <string name="app_name">MyCalculator</string>
-    <string name="action_settings">Settings</string>
-    <string name="resultString">resultString</string>
+    <string name="app_name">Calculator</string>
+    <string name="action_settings">settings</string>
     <string name="action_changeCalc">changeCalc </string>
     <string name="action_changeLanguage">changeLanguage </string>
+    <string name ="infoField">Author of this app is Magnus Finvik. We are currently on version 0.1</string>
+    <string name="infoTitle">information</string>
+    <string name="ok_button" translatable="false">OK</string>
+    <string name="resultText">result</string>
 </resources>
