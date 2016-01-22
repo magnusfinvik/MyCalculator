@@ -1,8 +1,40 @@
 <resources>
     <string name="app_name">Calculator</string>
     <string name="action_changeCalc">change calculator</string>
-    <string name ="infoField">Author of this app is Magnus Finvik. We are currently on version 0.1</string>
+    <string name ="infoField">Author of this app is Magnus Finvik. We are currently on version 1.0</string>
     <string name="infoTitle">information</string>
     <string name="ok_button" translatable="false">OK</string>
     <string name="resultText">result</string>
+    <string name="btnClear" translatable="false">CE</string>
+    <string name="btnPercentage" translatable="false">%</string>
+    <string name="btnSqrt" translatable="false">SQRT</string>
+    <string name="btnLog" translatable="false">LOG</string>
+    <string name="btnBracketRight" translatable="false">]</string>
+    <string name="btnUseAnswer" translatable="false">ANS</string>
+    <string name="btnSeven" translatable="false">7</string>
+    <string name="btnEight" translatable="false">8</string>
+    <string name="btnNine" translatable="false">9</string>
+    <string name="btnMultiply" translatable="false">X</string>
+    <string name="btnx2" translatable="false">X^2</string>
+    <string name="btn10X" translatable="false">10^X</string>
+    <string name="btnFour" translatable="false">4</string>
+    <string name="btnFive" translatable="false">5</string>
+    <string name="btnSix" translatable="false">6</string>
+    <string name="btnDivide" translatable="false">/</string>
+    <string name="btnSin" translatable="false">SIN</string>
+    <string name="btnSquared" translatable="false">^X</string>
+    <string name="btnOne" translatable="false">1</string>
+    <string name="btnTwo" translatable="false">2</string>
+    <string name="btnThree" translatable="false">3</string>
+    <string name="btnMinus" translatable="false">-</string>
+    <string name="btnCos" translatable="false">COS</string>
+    <string name="btnPI" translatable="false">PI</string>
+    <string name="btnZero" translatable="false">0</string>
+    <string name="btnComma" translatable="false">.</string>
+    <string name="btnEquals" translatable="false">=</string>
+    <string name="btnPlus" translatable="false">+</string>
+    <string name="btnTan" translatable="false">TAN</string>
+    <string name="btnFaculty" translatable="false">N!</string>
+    <string name="FacultyErrorMessage">This function is currently not working!</string>
+    <string name="EquationErrorMessage">Invalid input in this equation.</string>
 </resources>

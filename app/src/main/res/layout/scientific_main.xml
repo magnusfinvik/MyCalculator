@@ -12,8 +12,6 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text=""
-        android:maxHeight="150dp"
-        android:minHeight="110dp"
         android:layout_weight="1"
         android:gravity="center"
         android:textSize="24dp" />
@@ -32,22 +30,6 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent">
 
-        <Button
-            android:id="@+id/btnPercentage"
-            android:text="tjohei"
-            style="@style/buttonStyleLandScape"
-            android:onClick="btnClick" />
-        <Button
-            android:id="@+id/btnSqrt"
-            android:text="SQRT"
-            style="@style/buttonStyleLandScape"
-            android:onClick="btnClick" />
-        <Button
-            android:id="@+id/btnUseAnswer"
-            android:text="ANS"
-            style="@style/buttonStyleLandScape"
-            android:onClick="btnClick" />
-
     </TableRow>
 
     <TableRow
@@ -57,24 +39,39 @@
 
         <Button
             android:id="@+id/btnClear"
-            android:text="CE"
-            style="@style/MyOwnButtonStyle"
+            android:text="@string/btnClear"
+            style="@style/scientificButtonStyle"
             android:onClick= "btnClick"/>
         <Button
-            android:id="@+id/btnBracketLeft"
-            android:text="("
-            style="@style/MyOwnButtonStyle"
+            android:id="@+id/btnPercentage"
+            android:text="@string/btnPercentage"
+            style="@style/scientificButtonStyle"
+            android:onClick="btnClick" />
+        <Button
+            android:id="@+id/btnSqrt"
+            android:text="@string/btnSqrt"
+            style="@style/scientificButtonStyle"
+            android:onClick="btnClick" />
+        <Button
+            android:id="@+id/btnLog"
+            android:text="@string/btnLog"
+            style="@style/scientificButtonStyle"
             android:onClick= "btnClick"/>
         <Button
             android:id="@+id/btnBracketRight"
-            android:text=")"
-            style="@style/MyOwnButtonStyle"
+            android:text="@string/btnBracketRight"
+            style="@style/scientificButtonStyle"
+            android:onClick= "btnClick"/>
+
+        <ImageButton
+            android:id="@+id/btnRemoveOne"
+            style="@style/scientificremoveButtonStyle"
             android:onClick="btnClick"/>
         <Button
-            android:id="@+id/btnMultiply"
-            android:text="x"
-            style="@style/MyOwnButtonStyle"
-            android:onClick="btnClick"/>
+            android:id="@+id/btnUseAnswer"
+            android:text="@string/btnUseAnswer"
+            style="@style/scientificButtonStyle"
+            android:onClick="btnClick" />
     </TableRow>
 
     <TableRow
@@ -84,26 +81,36 @@
 
         <Button
             android:id="@+id/btnSeven"
-            android:text="7"
+            android:text="@string/btnSeven"
             style="@style/MyOwnButtonStyle"
             android:onClick= "btnClick"/>
 
         <Button
             android:id="@+id/btnEight"
-            android:text="8"
+            android:text="@string/btnEight"
             style="@style/MyOwnButtonStyle"
             android:onClick= "btnClick"/>
 
         <Button
             android:id="@+id/btnNine"
-            android:text="9"
+            android:text="@string/btnNine"
             style="@style/MyOwnButtonStyle"
             android:onClick= "btnClick"/>
         <Button
-            android:id="@+id/btnDivide"
-            android:text="/"
+            android:id="@+id/btnMultiply"
+            android:text="@string/btnMultiply"
             style="@style/MyOwnButtonStyle"
-            android:onClick= "btnClick"/>
+            android:onClick="btnClick"/>
+        <Button
+            android:id="@+id/btnx2"
+            android:text="@string/btnx2"
+            style="@style/scientificButtonStyle"
+            android:onClick="btnClick"/>
+        <Button
+            android:id="@+id/btn10X"
+            android:text="@string/btn10X"
+            style="@style/scientificButtonStyle"
+            android:onClick="btnClick"/>
     </TableRow>
 
     <TableRow
@@ -113,24 +120,35 @@
 
         <Button
             android:id="@+id/btnFour"
-            android:text="4"
+            android:text="@string/btnFour"
             style="@style/MyOwnButtonStyle"
             android:onClick= "btnClick"/>
         <Button
             android:id="@+id/btnFive"
-            android:text="5"
+            android:text="@string/btnFive"
             style="@style/MyOwnButtonStyle"
             android:onClick= "btnClick"/>
         <Button
             android:id="@+id/btnSix"
-            android:text="6"
+            android:text="@string/btnSix"
             style="@style/MyOwnButtonStyle"
             android:onClick= "btnClick"/>
         <Button
-            android:id="@+id/btnMinus"
-            android:text="-"
+            android:id="@+id/btnDivide"
+            android:text="@string/btnDivide"
             style="@style/MyOwnButtonStyle"
             android:onClick= "btnClick"/>
+        <Button
+            android:id="@+id/btnSin"
+            android:text="@string/btnSin"
+            style="@style/scientificButtonStyle"
+            android:onClick= "btnClick"/>
+        <Button
+            android:id="@+id/btnSquaredX"
+            android:text="@string/btnSquared"
+            style="@style/scientificButtonStyle"
+            android:onClick= "btnClick"/>
+
     </TableRow>
 
     <TableRow
@@ -140,24 +158,35 @@
 
         <Button
             android:id="@+id/btnOne"
-            android:text="1"
+            android:text="@string/btnOne"
             style="@style/MyOwnButtonStyle"
             android:onClick= "btnClick"/>
         <Button
             android:id="@+id/btnTwo"
-            android:text="2"
+            android:text="@string/btnTwo"
             style="@style/MyOwnButtonStyle"
             android:onClick= "btnClick"/>
         <Button
             android:id="@+id/btnThree"
-            android:text="3"
+            android:text="@string/btnThree"
             style="@style/MyOwnButtonStyle"
             android:onClick= "btnClick"/>
         <Button
-            android:id="@+id/btnPlus"
-            android:text="+"
+            android:id="@+id/btnMinus"
+            android:text="@string/btnMinus"
             style="@style/MyOwnButtonStyle"
+            android:onClick= "btnClick"/>^
+        <Button
+            android:id="@+id/btnCos"
+            android:text="@string/btnCos"
+            style="@style/scientificButtonStyle"
             android:onClick= "btnClick"/>
+        <Button
+            android:id="@+id/btnPI"
+            android:text="@string/btnPI"
+            style="@style/scientificButtonStyle"
+            android:onClick= "btnClick"/>
+
     </TableRow>
 
     <TableRow
@@ -167,25 +196,34 @@
 
         <Button
             android:id="@+id/btnZero"
-            android:text="0"
+            android:text="@string/btnZero"
             style="@style/MyOwnButtonStyle"
             android:onClick= "btnClick"/>
         <Button
             android:id="@+id/btnComma"
-            android:text=","
+            android:text="@string/btnComma"
             style="@style/MyOwnButtonStyle"
             android:onClick= "btnClick"/>
-        <Button
-            android:id="@+id/btnRemoveOne"
-            android:drawableRight="@android:drawable/ic_input_delete"
-            android:paddingRight="30dp"
-            style="@style/MyOwnButtonStyle"
-            android:onClick="btnClick"/>
         <Button
             android:id="@+id/btnEquals"
-            android:text="="
+            android:text="@string/btnEquals"
             style="@style/MyOwnButtonStyle"
             android:onClick= "btnClick"/>
-    </TableRow>
+        <Button
+            android:id="@+id/btnPlus"
+            android:text="@string/btnPlus"
+            style="@style/MyOwnButtonStyle"
+            android:onClick= "btnClick"/>
+        <Button
+            android:id="@+id/btnTan"
+            android:text="@string/btnTan"
+            style="@style/scientificButtonStyle"
+            android:onClick= "btnClick"/>
+        <Button
+            android:id="@+id/btnFaculty"
+            android:text="@string/btnFaculty"
+            style="@style/scientificButtonStyle"
+            android:onClick= "btnClick"/>
 
+    </TableRow>
 </TableLayout>

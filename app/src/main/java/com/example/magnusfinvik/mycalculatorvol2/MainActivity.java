@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.matheclipse.parser.client.eval.DoubleEvaluator;
 
@@ -16,8 +17,8 @@ public class MainActivity extends AppCompatActivity {
 
     private static final java.lang.String CALCULATOR_STATE = "Calculator";
     private static final java.lang.String EXPRESSION_STATE = "Expression";
+    private static final java.lang.String RESULT_STATE = "Result";
     private int typeOfCalculator = 0;
-    private String calculatorState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.content_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        calculatorState = "simple";
 
         if(savedInstanceState != null){
             typeOfCalculator = savedInstanceState.getInt(CALCULATOR_STATE);
@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
             ((TextView)findViewById(R.id.resultView)).setText(savedInstanceState.getCharSequence(EXPRESSION_STATE));
+            ((TextView)findViewById(R.id.result)).setText(savedInstanceState.getCharSequence(RESULT_STATE));
+
         }
     }
 
@@ -54,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onSaveInstanceState(Bundle outState){
         super.onSaveInstanceState(outState);
         outState.putCharSequence(EXPRESSION_STATE, ((TextView) findViewById(R.id.resultView)).getText().toString());
+        outState.putCharSequence(RESULT_STATE, ((TextView) findViewById(R.id.result)).getText().toString());
         outState.putInt(CALCULATOR_STATE, typeOfCalculator);
     }
 
@@ -65,16 +68,16 @@ public class MainActivity extends AppCompatActivity {
                 this.finish();
                 return true;
             case R.id.action_changeCalc:
-                if(calculatorState == "simple"){
+                if(typeOfCalculator == 0){
                     setContentView(R.layout.scientific_main);
                     Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
                     setSupportActionBar(toolbar);
-                    calculatorState = "scientific";
+                    typeOfCalculator = 1;
                 }else{
                     setContentView(R.layout.content_main);
                     Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
                     setSupportActionBar(toolbar);
-                    calculatorState = "simple";
+                    typeOfCalculator = 0;
                 }
                 return true;
             case R.id.action_info:
@@ -103,9 +106,14 @@ public class MainActivity extends AppCompatActivity {
         DoubleEvaluator mathEngine = new DoubleEvaluator();
         switch(view.getId()){
             case R.id.btnEquals:
-                double d = mathEngine.evaluate(resultView.getText().toString());
-                result.setText(Double.toString(d));
-                resultView.setText("");
+                try {
+                    double d = mathEngine.evaluate(resultView.getText().toString());
+                    result.setText(Double.toString(d));
+                    resultView.setText("");
+                }catch (Exception e){
+                    Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.EquationErrorMessage), Toast.LENGTH_SHORT);
+                    toast.show();
+                }
                 break;
             case R.id.btnClear: resultView.setText("");break;
             case R.id.btnRemoveOne:
@@ -118,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btnMultiply: resultView.append("*");break;
             case R.id.btnMinus: resultView.append("-");break;
             case R.id.btnPlus: resultView.append("+");break;
-            case R.id.btnPercentage: resultView.append("%");break;
+            case R.id.btnPercentage: resultView.append("/100");break;
             case R.id.btnSqrt: resultView.append("Sqrt[");break;
             case R.id.btnComma: resultView.append(".");break;
             case R.id.btnSeven: resultView.append("7");break;
@@ -131,6 +139,18 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btnTwo: resultView.append("2");break;
             case R.id.btnThree: resultView.append("3");break;
             case R.id.btnZero: resultView.append("0");break;
+            case R.id.btnLog: resultView.append("Log[");break;
+            case R.id.btnx2: resultView.append("^2");break;
+            case R.id.btn10X: resultView.append("10^");break;
+            case R.id.btnSin: resultView.append("Sin[");break;
+            case R.id.btnSquaredX: resultView.append("^");break;
+            case R.id.btnCos: resultView.append("Cos[");break;
+            case R.id.btnPI: resultView.append("Pi");break;
+            case R.id.btnTan: resultView.append("Tan[");break;
+            case R.id.btnFaculty:
+                Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.FacultyErrorMessage), Toast.LENGTH_SHORT);
+                toast.show();
+                break;
         }
     }
 }

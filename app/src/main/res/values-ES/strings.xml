@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">Calculadora</string>
     <string name="action_changeCalc">cambio calculadora</string>
-    <string name ="infoField">Autor de esta aplicación es Magnus Finvik. Actualmente nos encontramos en la versión 0.1.</string>
+    <string name ="infoField">Autor de esta aplicación es Magnus Finvik. Actualmente nos encontramos en la versión 1.0</string>
     <string name="infoTitle">información</string>
     <string name="resultText" >resultado</string>
+    <string name="EquationErrorMessage">De entrada no válido en esta ecuación.</string>
+    <string name="FacultyErrorMessage">Esta función no está funcionando!</string>
 </resources>

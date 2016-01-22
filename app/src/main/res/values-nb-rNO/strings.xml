@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">Kalkulator</string>
     <string name="action_changeCalc">endre kalkulator</string>
-    <string name ="infoField">Forfatter av denne appen er Magnus Finvik. Vi er nå på versjon 0.1</string>
+    <string name ="infoField">Forfatter av denne appen er Magnus Finvik. Vi er nå på versjon 1.0</string>
     <string name="infoTitle">informasjon</string>
     <string name="resultText" >resultat</string>
+    <string name="EquationErrorMessage">Feil input i utregningen!</string>
+    <string name="FacultyErrorMessage">Denne funksjonen er for tiden ute av funksjon!</string>
 </resources>
