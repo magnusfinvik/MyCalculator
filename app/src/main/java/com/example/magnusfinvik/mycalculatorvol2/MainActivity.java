@@ -26,7 +26,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.content_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        restoreCalculatorState(savedInstanceState);
+    }
 
+    private void restoreCalculatorState(Bundle savedInstanceState) {
         if(savedInstanceState != null){
             typeOfCalculator = savedInstanceState.getInt(CALCULATOR_STATE);
             switch (typeOfCalculator){
@@ -68,36 +71,43 @@ public class MainActivity extends AppCompatActivity {
                 this.finish();
                 return true;
             case R.id.action_changeCalc:
-                if(typeOfCalculator == 0){
-                    setContentView(R.layout.scientific_main);
-                    Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
-                    setSupportActionBar(toolbar);
-                    typeOfCalculator = 1;
-                }else{
-                    setContentView(R.layout.content_main);
-                    Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
-                    setSupportActionBar(toolbar);
-                    typeOfCalculator = 0;
-                }
+                changeCalculatorView();
                 return true;
             case R.id.action_info:
-
-                AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-                alertDialog.setTitle(getString(R.string.infoTitle));
-                alertDialog.setMessage(getString(R.string.infoField));
-                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, getString(R.string.ok_button),
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
-                alertDialog.show();
+                showInfoDialog();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
 
         }
+    }
+
+    private void changeCalculatorView() {
+        if(typeOfCalculator == 0){
+            setContentView(R.layout.scientific_main);
+            Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+            typeOfCalculator = 1;
+        }else{
+            setContentView(R.layout.content_main);
+            Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+            typeOfCalculator = 0;
+        }
+    }
+
+    private void showInfoDialog() {
+        AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+        alertDialog.setTitle(getString(R.string.infoTitle));
+        alertDialog.setMessage(getString(R.string.infoField));
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, getString(R.string.ok_button),
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
     }
 
     public void btnClick(View view) {
@@ -106,14 +116,7 @@ public class MainActivity extends AppCompatActivity {
         DoubleEvaluator mathEngine = new DoubleEvaluator();
         switch(view.getId()){
             case R.id.btnEquals:
-                try {
-                    double d = mathEngine.evaluate(resultView.getText().toString());
-                    result.setText(Double.toString(d));
-                    resultView.setText("");
-                }catch (Exception e){
-                    Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.EquationErrorMessage), Toast.LENGTH_SHORT);
-                    toast.show();
-                }
+                calculationOfEquation(resultView, result, mathEngine);
                 break;
             case R.id.btnClear: resultView.setText("");break;
             case R.id.btnRemoveOne:
@@ -151,6 +154,17 @@ public class MainActivity extends AppCompatActivity {
                 Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.FacultyErrorMessage), Toast.LENGTH_SHORT);
                 toast.show();
                 break;
+        }
+    }
+
+    private void calculationOfEquation(TextView resultView, TextView result, DoubleEvaluator mathEngine) {
+        try {
+            double d = mathEngine.evaluate(resultView.getText().toString());
+            result.setText(Double.toString(d));
+            resultView.setText("");
+        }catch (Exception e){
+            Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.EquationErrorMessage), Toast.LENGTH_SHORT);
+            toast.show();
         }
     }
 }
